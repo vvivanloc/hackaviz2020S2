@@ -12,7 +12,7 @@ div.blahContainer {
   }
 }
 
-@media (max-width: 1024px) {
+.smallerContainer {
   div.blahContainer {
     div.blah {
       height: 40px;
@@ -21,7 +21,7 @@ div.blahContainer {
   }
 }
 
-@media (max-width: 640px) {
+.smallContainerAndNoButton {
   div.blahContainer {
     div.blah {
       height: 60px;
@@ -31,4 +31,19 @@ div.blahContainer {
       display: none;
     }
   }
+}
+
+@media (max-width: 1024px) {
+  .smallerContainer;
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+  .smallerContainer;
+}
+
+@media (max-width: 640px) {
+  .smallContainerAndNoButton;
+}
+
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .smallContainerAndNoButton;
 }

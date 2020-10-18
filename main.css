@@ -3,7 +3,15 @@
 div.credits {
   margin: 5px 10px;
 }
+.smallCredits div.credits {
+  font-size: smaller;
+}
 @media (max-width: 1024px) {
+  div.credits {
+    font-size: smaller;
+  }
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) {
   div.credits {
     font-size: smaller;
   }
@@ -104,13 +112,39 @@ div.blahContainer div.blah {
   width: 100%;
   margin-bottom: 5px;
 }
+.smallerContainer div.blahContainer div.blah {
+  height: 40px;
+  overflow-y: scroll;
+}
+.smallContainerAndNoButton div.blahContainer div.blah {
+  height: 60px;
+  overflow-y: scroll;
+}
+.smallContainerAndNoButton div.blahContainer button {
+  display: none;
+}
 @media (max-width: 1024px) {
   div.blahContainer div.blah {
     height: 40px;
     overflow-y: scroll;
   }
 }
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+  div.blahContainer div.blah {
+    height: 40px;
+    overflow-y: scroll;
+  }
+}
 @media (max-width: 640px) {
+  div.blahContainer div.blah {
+    height: 60px;
+    overflow-y: scroll;
+  }
+  div.blahContainer button {
+    display: none;
+  }
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
   div.blahContainer div.blah {
     height: 60px;
     overflow-y: scroll;
@@ -134,19 +168,19 @@ body {
 .column {
   display: flex;
   flex-direction: row;
-  height: calc(100% - 220px);
+  height: calc(100% - 230px);
   width: 100%;
 }
 .column > div {
   display: flex;
   align-items: center;
   flex-direction: column;
-  flex: 0;
+  flex: 1;
 }
 .column .map,
 .column #map {
   flex: 1;
-  height: 100%;
+  height: calc(100% - 25px);
   width: 48vw;
   border: 1px solid #aaa;
   margin: 0px 10px;
@@ -216,17 +250,71 @@ div.departureboard {
 .mapToggler {
   display: none;
 }
+.smallLandscape .column {
+  height: calc(100% - 200px);
+}
+.smallLandscape .column .map,
+.smallLandscape .column #map {
+  width: 47vw;
+}
 @media (max-width: 1024px) {
   .column {
-    height: calc(100% - 170px);
+    height: calc(100% - 200px);
   }
   .column .map,
   .column #map {
-    flex: 1;
-    height: 90vh;
     width: 47vw;
-    margin: 0px 10px;
   }
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+  .column {
+    height: calc(100% - 200px);
+  }
+  .column .map,
+  .column #map {
+    width: 47vw;
+  }
+}
+.portrait div.departureboard {
+  max-width: 62%;
+}
+.portrait .mapToggler {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 5px;
+  height: 40px;
+}
+.portrait .mapToggler .info {
+  font-size: large;
+  margin: 0px 10px;
+  align-self: middle;
+  border: 1px solid grey;
+  padding: 5px;
+}
+.portrait .mapToggler .info:focus {
+  outline: green auto 5px;
+}
+.portrait .column {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 240px);
+}
+.portrait .column > div {
+  height: 70vh;
+}
+.portrait .column .map,
+.portrait .column #map {
+  width: 96%;
+}
+.portrait .column .map .leaflet-control,
+.portrait .column #map .leaflet-control {
+  display: none;
+}
+.portrait .column .info,
+.portrait .column #info {
+  height: 24px;
+  display: none;
 }
 @media (max-width: 640px) {
   div.departureboard {
@@ -259,9 +347,50 @@ div.departureboard {
   }
   .column .map,
   .column #map {
-    flex: 1;
-    height: calc(100% - 80px);
-    width: 81%;
+    width: 96%;
+  }
+  .column .map .leaflet-control,
+  .column #map .leaflet-control {
+    display: none;
+  }
+  .column .info,
+  .column #info {
+    height: 24px;
+    display: none;
+  }
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  div.departureboard {
+    max-width: 62%;
+  }
+  .mapToggler {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5px;
+    height: 40px;
+  }
+  .mapToggler .info {
+    font-size: large;
+    margin: 0px 10px;
+    align-self: middle;
+    border: 1px solid grey;
+    padding: 5px;
+  }
+  .mapToggler .info:focus {
+    outline: green auto 5px;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 240px);
+  }
+  .column > div {
+    height: 70vh;
+  }
+  .column .map,
+  .column #map {
+    width: 96%;
   }
   .column .map .leaflet-control,
   .column #map .leaflet-control {

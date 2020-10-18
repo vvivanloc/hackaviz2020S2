@@ -20,18 +20,18 @@ body {
 .column {
   display: flex;
   flex-direction: row;
-  height: calc(100% - 220px);
+  height: calc(100% - 230px);
   width: 100%;
   > div {
     display: flex;
     align-items: center;
     flex-direction: column;
-    flex: 0;
+    flex: 1;
   }
   .map,
   #map {
     flex: 1;
-    height: 100%;
+    height: calc(100% - 25px);
     width: 48vw;
     border: 1px solid #aaa;
     margin: 0px 10px;
@@ -114,20 +114,23 @@ div.departureboard {
   display: none;
 }
 
-@media (max-width: 1024px) {
+.smallLandscape {
   .column {
-    height: calc(100% - 170px);
+    height: calc(100% - 200px);
     .map,
     #map {
-      flex: 1;
-      height: 90vh;
       width: 47vw;
-      margin: 0px 10px;
     }
   }
 }
+@media (max-width: 1024px) {
+  .smallLandscape;
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+  .smallLandscape;
+}
 
-@media (max-width: 640px) {
+.portrait {
   div.departureboard {
     max-width: 62%;
   }
@@ -160,9 +163,7 @@ div.departureboard {
     }
     .map,
     #map {
-      flex: 1;
-      height: calc(100% - 80px);
-      width: 81%;
+      width: 96%;
 
       .leaflet-control {
         display: none;
@@ -174,4 +175,11 @@ div.departureboard {
       display: none;
     }
   }
+}
+
+@media (max-width: 640px) {
+  .portrait;
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .portrait;
 }

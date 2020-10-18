@@ -193,13 +193,13 @@ var board = new DepartureBoard(document.getElementById('test'), {
 };
 
 (window as any).displayPax = () => {
-  document.getElementById('mapPax').style.display = 'block';
-  document.getElementById('mapFret').style.display = 'none';
+  document.getElementById('tabPax').style.display = 'block';
+  document.getElementById('tabFret').style.display = 'none';
 };
 
 (window as any).displayFret = () => {
-  document.getElementById('mapPax').style.display = 'none';
-  document.getElementById('mapFret').style.display = 'block';
+  document.getElementById('tabPax').style.display = 'none';
+  document.getElementById('tabFret').style.display = 'block';
 };
 
 (window as any).onresize = () => {
@@ -210,8 +210,8 @@ var board = new DepartureBoard(document.getElementById('test'), {
   if (vw < 640) {
     (window as any).displayPax();
   } else {
-    document.getElementById('mapPax').style.display = 'block';
-    document.getElementById('mapFret').style.display = 'block';
+    document.getElementById('tabPax').style.display = 'block';
+    document.getElementById('tabFret').style.display = 'block';
   } 
 }
 

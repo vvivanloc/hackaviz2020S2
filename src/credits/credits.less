@@ -2,8 +2,15 @@ div.credits {
   margin: 5px 10px;
 }
 
-@media (max-width: 1024px) {
+.smallCredits {
   div.credits {
     font-size: smaller;
   }
+}
+
+@media (max-width: 1024px) {
+  .smallCredits;
+}
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) {
+  .smallCredits;
 }
