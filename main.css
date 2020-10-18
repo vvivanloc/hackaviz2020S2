@@ -16,6 +16,11 @@ div.credits {
     font-size: smaller;
   }
 }
+@media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  div.credits {
+    display: none;
+  }
+}
 .tooltip {
   text-decoration-line: underline;
   text-decoration-style: dashed;
