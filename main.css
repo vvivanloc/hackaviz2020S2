@@ -1,0 +1,193 @@
+@import 'src/departureboard/css/departure-board.css';
+@import 'src/mobilecheckbox.css';
+body {
+  font-family: Arial;
+  background-color: #555;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100vw;
+}
+.column {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 220px);
+  width: 100%;
+}
+.column > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.column .map,
+.column #map {
+  flex: 1;
+  height: 100%;
+  width: 48vw;
+  border: 1px solid #aaa;
+  margin: 0px 10px;
+}
+.column .info,
+.column #info {
+  font-size: large;
+  margin: 0px 10px;
+  align-self: middle;
+  font-family: 'Courier New', Courier, monospace;
+}
+.strikethru {
+  text-decoration: line-through;
+}
+.col-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.col-2 ul {
+  flex: 1;
+}
+.rectangle {
+  width: 16px;
+  height: 16px;
+  border: solid 1px gray;
+  display: inline-block;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rectangle.alpha {
+  opacity: 0.7;
+}
+.rectangle.big {
+  width: 32px;
+  height: 32px;
+  border: solid 1px gray;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+ul {
+  margin-top: 3px;
+}
+.tooltip {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-position: under;
+}
+[tooltip] {
+  position: relative;
+  display: inline-block;
+}
+[tooltip]::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+  z-index: 9999;
+  opacity: 0;
+}
+[tooltip-position='left']::before {
+  left: 0%;
+  top: 50%;
+  margin-left: -12px;
+  transform: translatey(-50%) rotate(-90deg);
+}
+[tooltip-position='top']::before {
+  left: 50%;
+}
+[tooltip-position='bottom']::before {
+  top: 100%;
+  margin-top: 8px;
+  transform: translateX(-50%) translatey(-100%) rotate(-180deg);
+}
+[tooltip-position='right']::before {
+  left: 100%;
+  top: 50%;
+  margin-left: 1px;
+  transform: translatey(-50%) rotate(90deg);
+}
+[tooltip]::after {
+  content: attr(tooltip);
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%) translateY(-100%);
+  background: rgba(0, 0, 0, 0.7);
+  text-align: left;
+  color: #fff;
+  padding: 4px 2px;
+  font-size: 12px;
+  min-width: 80px;
+  border-radius: 5px;
+  pointer-events: none;
+  padding: 4px 4px;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+  opacity: 0;
+}
+[tooltip-position='left']::after {
+  left: 0%;
+  top: 50%;
+  margin-left: -8px;
+  transform: translateX(-100%) translateY(-50%);
+}
+[tooltip-position='top']::after {
+  left: 50%;
+}
+[tooltip-position='bottom']::after {
+  top: 100%;
+  margin-top: 8px;
+  transform: translateX(-50%) translateY(0%);
+}
+[tooltip-position='right']::after {
+  left: 100%;
+  top: 50%;
+  margin-left: 8px;
+  transform: translateX(0%) translateY(-50%);
+}
+[tooltip]:hover::after,
+[tooltip]:hover::before {
+  opacity: 1;
+}
+.leaflet-container {
+  background: black;
+  outline: 0;
+}
+div.form {
+  margin-right: 5px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+}
+div.form span {
+  padding: 5px;
+}
+div.departureboard {
+  height: 40px;
+  margin: 10px;
+  max-width: 83%;
+  overflow: hidden;
+}
+div.blahContainer {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: calc(100% - 30px);
+}
+div.blahContainer div.blah {
+  height: 90px;
+  width: 100%;
+}
+div.credits {
+  margin: 5px 10px;
+}

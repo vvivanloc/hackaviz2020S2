@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head profile="http://gmpg.org/xfn/11">
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+  </head>
+
+  <body>
+    <div id="test" class="departureboard"></div>
+    <div class="form">
+      <label class="switch">
+        <input type="checkbox" id="checkbox" onclick="togglePoints();" />
+
+        <span class="slider round"></span>
+      </label>
+      <span id="year">2009</span>
+    </div>
+
+    <div class="blahContainer">
+      <div class="blah"></div>
+      <button onclick="nextSlide();">Suivant</button>
+    </div>
+
+    <div class="column">
+      <div>
+        <div class="info">Passagers</div>
+        <div id="mapPax" class="map"></div>
+      </div>
+      <div>
+        <div class="info">Fret</div>
+        <div id="mapFret" class="map"></div>
+      </div>
+    </div>
+
+    <script src="departure-board/departure-board.js"></script>
+    <script type="text/javascript" src="src/preprocess/out/arcs.js"></script>
+    <script type="text/javascript" src="src/preprocess/out/nodes.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+
+    <!-- leaflet plugins -->
+    <!-- <script
+      type="text/javascript"
+      src="leaflet/leaflet.polylineoffset.js"
+    ></script> -->
+    <script type="text/javascript" src="leaflet/L.Map.Sync.js"></script>
+
+    <div class="credits"></div>
+  </body>
+</html>
