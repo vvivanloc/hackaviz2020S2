@@ -13,7 +13,11 @@ div.credits {
 }
 
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) {
-  .smallCredits;
+    // too many bars and stuff on mobile, just hide it for now ☹
+   div.credits {
+       display: none;
+   }
+
 }
 
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
