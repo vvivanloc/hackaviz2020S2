@@ -30,7 +30,7 @@ function _renderArcs(
     [dest.lng, dest.lat],
   ];
 
-  const label = `${arc.Origine} ⟷ ${arc.Destination}: ${
+  const label = `<b>${arc.Origine} ⟷ ${arc.Destination}</b><br> ${
     type === 'Pax'
       ? Number(arc[attrib]).toLocaleString('fr-FR') + ' passagers'
       : Number(arc[attrib]).toLocaleString('fr-FR') + ' t'

@@ -10,6 +10,8 @@ import { Arc } from './model/arc';
 import { renderNode } from './view/mean/node.renderer';
 
 import { renderArcs } from './view/mean/arc.renderer';
+import { renderCredits } from './credits/credits';
+import { comments, renderComments, setDivComments } from './comments/comments';
 
 // -1 for all
 const nbMaxNodes: number = -1;
@@ -22,7 +24,7 @@ let arcData = _arcs as Array<Arc>;
 async function createOpenStreetMapLayer(mapDivId: string): Promise<L.Map> {
   var map = L.map(mapDivId, {
     center: [46.7, 2.3],
-    minZoom: 5,
+    minZoom: 4,
     maxZoom: 8,
     zoom: 5.5,
     renderer: L.svg(),
@@ -136,33 +138,13 @@ var board = new DepartureBoard(document.getElementById('test'), {
   letterCount: 52,
 });
 
-const divComments = document.getElementsByClassName('blah')[0];
-const comments = [
-  `<ul>
-  <li> Avec 83 millions de passagers, Paris se démarque des 5 plus grands aéroports, Nice (10M), Lyon, Marseille et Toulouse (6M).</li>
-  <li> Paris draine la majeure partie du fret (1,3Mt), loin devant Marseille et Toulouse (50 kt) avec deux axes, St-Nazaire ⟷ Toulouse, Paris ⟷ Bale-Mulhouse (8t).</li>
-   </ul>
-  `,
-  `
-  Comment a évolué le trafic 10 ans après ?
-  `,
-  `
-  <ul>
-  <li>Paris continue en tête avec 108 millions de passagers.Les 5 plus grands aéroports (15 à 10M) sont rejoints par Nantes et Bordeaux (7M).</li>
-  <li>Le passagers préfèrent le train (lignes TGV Paris ⟷ Marseille et Paris ⟷ Bordeaux).</li>
-  <li>Pour le fret, les colis devant arriver toujours plus vite, 4 axes se sont renforcés entre Paris, Marseille, Toulouse, Lyon et Montpellier.</li>
-  <li>Le trafic passager et fret se concentre : les petits aéroports sont absorbés par les grands pôles.</li>  
-   </ul>
-   `,
-];
-
 (window as any).togglePoints = () => {
   if (toggle) {
     document.getElementById('year').innerHTML = '2019';
     board.setValue([titre, 'ANNEE 2019']);
 
     slideIndex = 2;
-    divComments.innerHTML = comments[slideIndex];
+    renderComments(slideIndex);
 
     linePaxArcs[0].removeFrom(mapPax);
     linePaxArcs[1].addTo(mapPax);
@@ -177,7 +159,7 @@ const comments = [
     document.getElementById('year').innerHTML = '2009';
 
     slideIndex = 0;
-    divComments.innerHTML = comments[slideIndex];
+    renderComments(slideIndex);
 
     board.setValue([titre, 'ANNEE 2009']);
     linePaxArcs[1].removeFrom(mapPax);
@@ -194,7 +176,7 @@ const comments = [
 };
 
 (window as any).nextSlide = () => {
-  divComments.innerHTML = comments[slideIndex + 1];
+  renderComments(slideIndex + 1);
   slideIndex = slideIndex + 1;
   if (slideIndex == 2) {
     toggle = true;
@@ -210,31 +192,44 @@ const comments = [
   }
 };
 
-const credits=[
-  "Source des données : Mapathon 2020, Direction générale de l'aviation civile (2020), Eurostats (2020)  - fond de carte France Topojson Khartis",
-  "Préparation des données : débroussaillage LibreOffice et préparation avec Pandas",
-  "Rendu des données : Librairie Leaflet, greffons leaflet-ant-path et Leaflet.Sync",
-  "Codage avec ❤️ sous Lubuntu Focal Fossa et Visual Studio Code, code TypeScript, HTML5, less - panneau d'affichage DepartureBoard.js"
-];
+(window as any).displayPax = () => {
+  document.getElementById('mapPax').style.display = 'block';
+  document.getElementById('mapFret').style.display = 'none';
+};
+
+(window as any).displayFret = () => {
+  document.getElementById('mapPax').style.display = 'none';
+  document.getElementById('mapFret').style.display = 'block';
+};
+
+(window as any).onresize = () => {
+  const vw = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
+  );
+  if (vw < 640) {
+    (window as any).displayPax();
+  } else {
+    document.getElementById('mapPax').style.display = 'block';
+    document.getElementById('mapFret').style.display = 'block';
+  } 
+}
 
 function main() {
-  renderMap();
+  renderMap().then(() => {
+    (window as any).onresize();
+  });
 
-  divComments.innerHTML = comments[0];
+  setDivComments();
+  renderComments(0);
 
   board.setValue([titre]);
-  window.setTimeout( ()=> {
+  window.setTimeout(() => {
     board.setValue([titre, 'ANNEE 2009']);
   }, 1000);
 
-  let i=0;
-  
-  window.setInterval(()=> {
-    const divCredits = document.getElementsByClassName('credits')[0];
-    divCredits.innerHTML=credits[i];
-    i=((i+1)%(credits.length));
-  }
-  ,5000);
+  renderCredits();
 }
+
 
 main();

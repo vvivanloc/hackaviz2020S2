@@ -1,1 +1,4 @@
 node_modules
+src/credits/credits.css
+src/tooltip/tooltip.css
+src/comments/comments.css

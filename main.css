@@ -1,76 +1,12 @@
 @import 'src/departureboard/css/departure-board.css';
-@import 'src/mobilecheckbox.css';
-body {
-  font-family: Arial;
-  background-color: #555;
-  color: white;
-  padding: 0;
-  margin: 0;
+@import 'src/mobilecheckbox/mobilecheckbox.css';
+div.credits {
+  margin: 5px 10px;
 }
-html,
-body {
-  height: 100%;
-  width: 100vw;
-}
-.column {
-  display: flex;
-  flex-direction: row;
-  height: calc(100% - 220px);
-  width: 100%;
-}
-.column > div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.column .map,
-.column #map {
-  flex: 1;
-  height: 100%;
-  width: 48vw;
-  border: 1px solid #aaa;
-  margin: 0px 10px;
-}
-.column .info,
-.column #info {
-  font-size: large;
-  margin: 0px 10px;
-  align-self: middle;
-  font-family: 'Courier New', Courier, monospace;
-}
-.strikethru {
-  text-decoration: line-through;
-}
-.col-2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.col-2 ul {
-  flex: 1;
-}
-.rectangle {
-  width: 16px;
-  height: 16px;
-  border: solid 1px gray;
-  display: inline-block;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.rectangle.alpha {
-  opacity: 0.7;
-}
-.rectangle.big {
-  width: 32px;
-  height: 32px;
-  border: solid 1px gray;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-ul {
-  margin-top: 3px;
+@media (max-width: 1024px) {
+  div.credits {
+    font-size: smaller;
+  }
 }
 .tooltip {
   text-decoration-line: underline;
@@ -157,6 +93,105 @@ ul {
 [tooltip]:hover::before {
   opacity: 1;
 }
+div.blahContainer {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: calc(100% - 30px);
+}
+div.blahContainer div.blah {
+  height: 90px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+@media (max-width: 1024px) {
+  div.blahContainer div.blah {
+    height: 40px;
+    overflow-y: scroll;
+  }
+}
+@media (max-width: 640px) {
+  div.blahContainer div.blah {
+    height: 60px;
+    overflow-y: scroll;
+  }
+  div.blahContainer button {
+    display: none;
+  }
+}
+body {
+  font-family: Arial;
+  background-color: #555;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100vw;
+}
+.column {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 220px);
+  width: 100%;
+}
+.column > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 0;
+}
+.column .map,
+.column #map {
+  flex: 1;
+  height: 100%;
+  width: 48vw;
+  border: 1px solid #aaa;
+  margin: 0px 10px;
+}
+.column .info,
+.column #info {
+  font-size: large;
+  margin: 0px 10px;
+  align-self: middle;
+  font-family: 'Courier New', Courier, monospace;
+}
+.strikethru {
+  text-decoration: line-through;
+}
+.col-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.col-2 ul {
+  flex: 1;
+}
+.rectangle {
+  width: 16px;
+  height: 16px;
+  border: solid 1px gray;
+  display: inline-block;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rectangle.alpha {
+  opacity: 0.7;
+}
+.rectangle.big {
+  width: 32px;
+  height: 32px;
+  border: solid 1px gray;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+ul {
+  margin-top: 3px;
+}
 .leaflet-container {
   background: black;
   outline: 0;
@@ -178,16 +213,63 @@ div.departureboard {
   max-width: 83%;
   overflow: hidden;
 }
-div.blahContainer {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  width: calc(100% - 30px);
+.mapToggler {
+  display: none;
 }
-div.blahContainer div.blah {
-  height: 90px;
-  width: 100%;
+@media (max-width: 1024px) {
+  .column {
+    height: calc(100% - 170px);
+  }
+  .column .map,
+  .column #map {
+    flex: 1;
+    height: 90vh;
+    width: 47vw;
+    margin: 0px 10px;
+  }
 }
-div.credits {
-  margin: 5px 10px;
+@media (max-width: 640px) {
+  div.departureboard {
+    max-width: 62%;
+  }
+  .mapToggler {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5px;
+    height: 40px;
+  }
+  .mapToggler .info {
+    font-size: large;
+    margin: 0px 10px;
+    align-self: middle;
+    border: 1px solid grey;
+    padding: 5px;
+  }
+  .mapToggler .info:focus {
+    outline: green auto 5px;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 240px);
+  }
+  .column > div {
+    height: 70vh;
+  }
+  .column .map,
+  .column #map {
+    flex: 1;
+    height: calc(100% - 80px);
+    width: 81%;
+  }
+  .column .map .leaflet-control,
+  .column #map .leaflet-control {
+    display: none;
+  }
+  .column .info,
+  .column #info {
+    height: 24px;
+    display: none;
+  }
 }
