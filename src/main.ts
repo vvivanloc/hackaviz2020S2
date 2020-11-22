@@ -25,7 +25,7 @@ async function createOpenStreetMapLayer(mapDivId: string): Promise<L.Map> {
   var map = L.map(mapDivId, {
     center: [46.7, 2.3],
     minZoom: 4,
-    maxZoom: 8,
+    maxZoom: 9,
     zoom: 5.5,
     renderer: L.svg(),
   });

@@ -58,7 +58,7 @@ function _renderArcs(
       color: 'white',
       weight: weight,
       lineCap: 'butt',
-      opacity: 0.7,
+      opacity: 0.6,
       delay: 500,
       dashArray: [
         100 / (arc[attrib] / (type === 'Pax' ? 1e6 : 5000)),
