@@ -1,6 +1,9 @@
 **Hackviz 2020 s2**
 --
 
+Build and test
+- test: `yarn run start` 
+- package: `yarn run build` 
 
 Data source 
 - Hackaviz 2020 team
@@ -18,6 +21,8 @@ Data vizualisation
 - Typescript, Less
 
 The demo is available [here](https://vvivanloc.github.io/hackaviz2020S2/).
+
+
 
 Credits
 Sciences Po, Atelier de Cartographie/Khartis, fond de carte par régions, France topojson
