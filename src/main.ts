@@ -12,6 +12,7 @@ import { renderNode } from './view/mean/node.renderer';
 import { renderArcs } from './view/mean/arc.renderer';
 import { renderCredits } from './credits/credits';
 import { comments, renderComments, setDivComments } from './comments/comments';
+import { help2019, help2009 } from './help/help';
 
 // -1 for all
 const nbMaxNodes: number = -1;
@@ -141,6 +142,8 @@ var board = new DepartureBoard(document.getElementById('test'), {
 (window as any).togglePoints = () => {
   if (toggle) {
     document.getElementById('year').innerHTML = '2019';
+    document.getElementById('help-content').innerHTML = help2019;
+
     board.setValue([titre, 'ANNEE 2019']);
 
     slideIndex = 2;
@@ -157,6 +160,7 @@ var board = new DepartureBoard(document.getElementById('test'), {
     markerFretLayers[1].addTo(mapFret);
   } else {
     document.getElementById('year').innerHTML = '2009';
+    document.getElementById('help-content').innerHTML = help2009;
 
     slideIndex = 0;
     renderComments(slideIndex);
@@ -180,7 +184,6 @@ var board = new DepartureBoard(document.getElementById('test'), {
   slideIndex = slideIndex + 1;
   if (slideIndex == 2) {
     toggle = true;
-
     (window as any).togglePoints();
     (document.getElementById('checkbox') as HTMLInputElement).checked = true;
   }
@@ -212,8 +215,8 @@ var board = new DepartureBoard(document.getElementById('test'), {
   } else {
     document.getElementById('tabPax').style.display = 'block';
     document.getElementById('tabFret').style.display = 'block';
-  } 
-}
+  }
+};
 
 function main() {
   renderMap().then(() => {
@@ -226,10 +229,10 @@ function main() {
   board.setValue([titre]);
   window.setTimeout(() => {
     board.setValue([titre, 'ANNEE 2009']);
+    document.getElementById('help-content').innerHTML = help2009;
   }, 1000);
 
   renderCredits();
 }
-
 
 main();
