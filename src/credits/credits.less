@@ -2,6 +2,15 @@ div.credits {
   margin: 5px 10px;
 }
 
+a,a:visited {
+  text-decoration: none;
+  color: #1a0dab;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .smallCredits {
   div.credits {
     font-size: smaller;
@@ -13,11 +22,10 @@ div.credits {
 }
 
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) {
-    // too many bars and stuff on mobile, just hide it for now ☹
-   div.credits {
-       display: none;
-   }
-
+  // too many bars and stuff on mobile, just hide it for now ☹
+  div.credits {
+    display: none;
+  }
 }
 
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {

@@ -3,6 +3,14 @@
 div.credits {
   margin: 5px 10px;
 }
+a,
+a:visited {
+  text-decoration: none;
+  color: #1a0dab;
+}
+a:hover {
+  text-decoration: underline;
+}
 .smallCredits div.credits {
   font-size: smaller;
 }
@@ -13,7 +21,7 @@ div.credits {
 }
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) {
   div.credits {
-    font-size: smaller;
+    display: none;
   }
 }
 @media screen and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
