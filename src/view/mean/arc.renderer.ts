@@ -71,6 +71,10 @@ function _renderArcs(
       sticky: true,
     });
     path.addTo(lineArcs);
+    window.setInterval(()=> {
+      path.reverse()
+    }, 1000*(Math.random()*10+5));
+
   } else {
     L.polyline(mainLine, {
       color: color,
